@@ -1,0 +1,307 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+namespace project_1
+{
+    class Program
+    {
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+        static void Main(string[] args)
+        {
+            String[] childrenNames;
+            int[] childrenAges;
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+            //intro + Question 1
+            Console.WriteLine("Hello User.Welcome to the virtual friend machine.");
+            Console.WriteLine("In order to become friends");
+            Console.WriteLine("I will need to learn some details about your life.");
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+            Console.WriteLine("So,my first question is, What is your name?");
+            String name = Console.ReadLine();
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+            //Question 2
+            Console.WriteLine("Nice to meet you {0}, I wander", name);
+            Console.WriteLine("What year you were born?");
+            Console.WriteLine("I will need an integer for the answer.");
+
+ 
+
+ 
+
+ 
+
+ 
+
+            int birthyear = Convert.ToInt32(Console.ReadLine());
+
+ 
+
+ 
+
+ 
+
+ 
+
+            while (birthyear <= 0)
+            {
+                Console.WriteLine("Please give a positive integer");
+                birthyear = Convert.ToInt32(Console.ReadLine());
+            }
+
+ 
+
+ 
+
+ 
+
+ 
+
+            int CurrentYear = Convert.ToInt32(DateTime.Now.Year);
+            int age = CurrentYear - birthyear;
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+            //Question 3
+            Console.WriteLine("Hmmm let me know.What is the name");
+            Console.WriteLine("of the city you were born?");
+            string cityname = Console.ReadLine();
+            Console.WriteLine("Wow What a beautiful city!!!");
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+            //Question 4
+
+ 
+
+ 
+
+            Console.WriteLine("So are you married?");
+            Console.WriteLine("I need a yes or no answer to understand you.");
+
+ 
+
+ 
+
+            string marritalStatus = Console.ReadLine();
+
+ 
+
+ 
+
+            if (marritalStatus.ToUpper() == "YES")
+            {
+                Console.WriteLine("Very nice for you.How many years have you been married?");
+                Console.WriteLine("As before need an integer for the answer.");
+
+ 
+
+ 
+
+                int yearsMarried = Convert.ToInt32(Console.ReadLine());
+                int yearOfMarriage = CurrentYear - yearsMarried;
+                while (yearsMarried <= 0)
+                {
+                    Console.WriteLine("I didn't understand.Please give a positive integer!!");
+                    yearsMarried = Convert.ToInt32(Console.ReadLine());
+                }
+
+ 
+
+ 
+
+
+                Console.WriteLine("So do you have any children with your loved one?");
+                Console.WriteLine("Keep it simple,I just need a yes or no answer too.");
+                string hasChildren = Console.ReadLine();
+
+ 
+
+                if (hasChildren.ToUpper() == "YES")
+                {
+                    Console.WriteLine("Kids are everything in life.How many children do you have?");
+                    Console.WriteLine("I will also need an integer for the answer.");
+
+ 
+
+ 
+
+                    int numOfChildren = Convert.ToInt32(Console.ReadLine());
+
+ 
+
+ 
+
+                    while (numOfChildren <= 0)
+                    {
+                        Console.WriteLine("Please give me a positive integer!I can't understand.");
+                        numOfChildren = Convert.ToInt32(Console.ReadLine());
+                    }
+
+ 
+
+ 
+
+
+                    childrenNames = new string[numOfChildren];
+
+ 
+
+ 
+
+                    if (numOfChildren > 0)
+                    {
+                        childrenNames = new string[numOfChildren];
+                        childrenAges = new int[numOfChildren];
+
+ 
+
+ 
+
+ 
+
+
+                        for (int childNumber = 0; childNumber < numOfChildren; childNumber++)
+                        {
+                            Console.WriteLine("Let me know,what is the name of your " + (childNumber + 1) + " child?");
+                            childrenNames[childNumber] = Console.ReadLine();
+                            Console.WriteLine("and what is the age of your " + (childNumber + 1) + " child?");
+                            childrenAges[childNumber] = Convert.ToInt32(Console.ReadLine());
+                            
+
+ 
+
+ 
+
+                        }
+
+ 
+
+ 
+
+ 
+
+                        if (hasChildren.ToUpper() == "YES")
+                        {
+                            Console.WriteLine("All these nice answers about you.I will need something that represents you.");
+                            Console.WriteLine("So what is your favourite color?");
+                            string favColor = Console.ReadLine();
+                            Console.WriteLine("Dear " + name + ", your were born in " + birthyear + "so you are " + age + " and born in the city of " + cityname + ".");
+                            Console.WriteLine("You have been married for " + yearsMarried + " and you got married in " + yearOfMarriage + " and you have " + numOfChildren + " children.");
+                            for (int childNumber = 0; childNumber < numOfChildren; childNumber++)
+                            {
+                                Console.WriteLine("The name of your " + (childNumber + 1) + " child is " + childrenNames[childNumber] + " and was born in the year of " + (CurrentYear - childrenAges[childNumber]) + ".");
+                            }
+                            Console.WriteLine("Your favourite color is " + favColor + ".");
+                        }
+
+ 
+
+ 
+
+ 
+
+                    }
+                }
+                else if (hasChildren.ToUpper() == "NO")
+                {
+                    Console.WriteLine("I wish someday you will have children.Finally I need something that represents you.");
+                    Console.WriteLine("What is your favourite color?");
+                    string favColor = Console.ReadLine();
+                    Console.WriteLine("Dear " + name + ", your were born in " + birthyear + "so you are " + age + " and born in the city of " + cityname + ".");
+                    Console.WriteLine("You have been married for " + yearsMarried + " and you got married in " + yearOfMarriage + " and you don't have any children.");
+                    Console.WriteLine("Your favourite color is " + favColor + ".");
+                }
+
+ 
+
+ 
+
+ 
+
+
+            }
+            else if (marritalStatus.ToUpper() == "NO")
+            {
+                Console.WriteLine("So you are a stand alone warrior in this life! What is your favorite color my friend?");
+                string favColor = Console.ReadLine();
+                Console.WriteLine("Dear " + name + ", your were born in " + birthyear + "so you are " + age + " and born in the city of " + cityname + ".");
+                Console.WriteLine("You are not married and your favourite color is " + favColor + ".");
+            }
+
+ 
+
+ 
+
+        }
+    }
+}
